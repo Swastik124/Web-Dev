@@ -8,11 +8,11 @@
 <body>
     <input type="text" id="userName" required>
     <input type="password" id="pass" required>
-    <button onclick="signUpFun()">SignUp</button>
+    <button onclick="signUpFun()">SignUp</button><br><br>
+    <button onclick="redirect()">Want to Login ?</button>
 </body>
 </html>
 <script>
-    let signUpData=JSON.parse(localStorage.getItem("signUpArr")) || []
     // let x=localStorage.getItem("signUpaArr");
     // if(x===null){
     //     signUpArr=[];
@@ -22,12 +22,15 @@
     // }
     let userName= document.querySelector("#userName");
     let pass= document.querySelector("#pass");
-    let flag=false;
+    function redirect(){
+            window.location.href="login.html"
+        }
     function signUpFun(){
         let obj ={
             userName: userName.value,
             pass: pass.value
         }
+        let flag=false;
         for(let i=0;i<signUpData.length;i++){
             if(signUpData[i].userName === obj.userName){
                 flag=true;
@@ -43,4 +46,5 @@
         }
         console.log(signUpData);
     }
+    let signUpData=JSON.parse(localStorage.getItem("signUpArr")) || []
 </script>

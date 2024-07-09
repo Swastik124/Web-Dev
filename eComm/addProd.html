@@ -18,7 +18,9 @@
     <input type="text" placeholder="Discription of the product" id="dis">
     <input type="text" id="image-url" placeholder="Enter image URL here">
     <button id="submit-button">Add this Product</button>
+    <button onclick="somefun()">Go to Homepage</button>
     <div id="image-container"></div>
+
 </body>
 </html>
 <script>
@@ -31,6 +33,9 @@
     let submitButton = document.getElementById('submit-button');
     let imageDiv=document.getElementById("image-container");
     flag=false;
+    function somefun(){
+        window.location.href="Homepage.html"
+    }
     submitButton.addEventListener('click',()=>{
     let obj ={
             name: name.value,
@@ -58,4 +63,5 @@
     imageDiv.innerHTML='';
     imageDiv.appendChild(img);
     });
+    localStorage.setItem("productArr",JSON.stringify(productData));
 </script>

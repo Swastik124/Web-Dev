@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="useName">
+    <input type="text" id="userName">
     <input type="password" id="pass">
     <button onclick="login()">Login</button>
 </body>
@@ -18,13 +18,15 @@
     let signUpData=JSON.parse(localStorage.getItem("signUpArr")) || []
     console.log(signUpData);
     function login(){
-    for(let i=o;i<signUpData.length;i++){
+    for(let i=0;i<signUpData.length;i++){
         if(signUpData[i].userName===userName.value && signUpData[i].pass=== pass.value){
             flag=true;
         }
     }
     if(flag === true){
+         window.location.href="Homepage.html"
         alert("Login Successfull");
+       
         }else{
             alert("Login Failed");
             }
