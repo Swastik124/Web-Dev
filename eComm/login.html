@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="useName">
+    <input type="password" id="pass">
+    <button onclick="login()">Login</button>
+</body>
+</html>
+<script>
+    let userName=document.querySelector("#userName");
+    let pass=document.querySelector("#pass");
+    flag=false;
+    let signUpData=JSON.parse(localStorage.getItem("signUpArr")) || []
+    console.log(signUpData);
+    function login(){
+    for(let i=o;i<signUpData.length;i++){
+        if(signUpData[i].userName===userName.value && signUpData[i].pass=== pass.value){
+            flag=true;
+        }
+    }
+    if(flag === true){
+        alert("Login Successfull");
+        }else{
+            alert("Login Failed");
+            }
+    }
+
+</script>

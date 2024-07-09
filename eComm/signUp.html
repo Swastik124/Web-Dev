@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="userName" required>
+    <input type="password" id="pass" required>
+    <button onclick="signUpFun()">SignUp</button>
+</body>
+</html>
+<script>
+    let signUpData=JSON.parse(localStorage.getItem("signUpArr")) || []
+    // let x=localStorage.getItem("signUpaArr");
+    // if(x===null){
+    //     signUpArr=[];
+    // }
+    // else{
+    //     signUpData=JSON.parse(x);
+    // }
+    let userName= document.querySelector("#userName");
+    let pass= document.querySelector("#pass");
+    let flag=false;
+    function signUpFun(){
+        let obj ={
+            userName: userName.value,
+            pass: pass.value
+        }
+        for(let i=0;i<signUpData.length;i++){
+            if(signUpData[i].userName === obj.userName){
+                flag=true;
+                alert("UserName already exists");
+            }
+            else{
+                flag=false;
+            }
+        }
+        if(flag === false){
+            signUpData.push(obj);
+            localStorage.setItem("signUpArr",JSON.stringify(signUpData));
+        }
+        console.log(signUpData);
+    }
+</script>
