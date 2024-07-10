@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <input type="text" name="" id="id" placeholder="id" />
+    <input type="text" name="" id="title" placeholder="title" />
+    <input type="text" name="" id="price" placeholder="price" />
+    <input type="text" name="" id="description" placeholder="description" />
+    <input type="text" name="" id="category" placeholder="category" />
+    <input type="text" name="" id="image" placeholder="image" />
+    <input type="text" name="" id="rate" placeholder="rate" />
+    <input type="text" name="" id="count" placeholder="count" />
+    <button onclick="update()">Update</button>
+</body>
+</html>
+<script>
+    // let ApiData;
+    let updInd = JSON.parse(localStorage.getItem("updInd"));
+    let data = JSON.parse(localStorage.getItem("data"))
+     document.getElementById("id").value = data[updInd].id;
+     document.getElementById("title").value = data[updInd].title;
+     document.getElementById("price").value = data[updInd].price;
+     document.getElementById("description").value = data[updInd].description;
+     document.getElementById("category").value = data[updInd].category;
+     document.getElementById("image").value = data[updInd].image;
+     document.getElementById("rate").value = data[updInd].rating.rate;
+     document.getElementById("count").value = data[updInd].rating.count;
+    function update(){
+        let obj={
+            id:document.getElementById("id").value,
+            title:document.getElementById("title").value,
+            price:document.getElementById("price").value,
+            description:document.getElementById("description").value,
+            category:document.getElementById("category").value,
+            image:document.getElementById("image").value,
+            rating:{rate:document.getElementById("rate").value,count:document.getElementById("count").value}
+        }
+        data[updInd]=obj;
+        localStorage.setItem("data",JSON.stringify(data));
+        window.location.href = "Homepage.html";
+    }
+
+    // console.log(data,updInd);
+    // console.log(data[updInd]);
+
+
+    // let arr = [1,2,3,4]
+    // arr[2] = 10;
+    // console.log(arr);
+
+    // async function getData(){
+    //     let api = await fetch("https://fakestoreapi.com/products")
+    //     let newData = await api.json();
+    //     console.log(api);
+    //     console.log(newData);
+    //     // ApiData = newData
+    // }
+    // getData()
+
+</script>
+
+
+<!-- async await; -->

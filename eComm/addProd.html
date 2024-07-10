@@ -1,67 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <style>
-    #image-container {
-        width: 300px;
-        margin: 20px auto;
-        border: 1px solid #ccc;
-    }
-    </style>
-</head>
-<body>
-    <input type="text" placeholder="Name of the product" id="name">
-    <input type="text" placeholder="Price of the Product" id="price">
-    <input type="text" placeholder="Discription of the product" id="dis">
-    <input type="text" id="image-url" placeholder="Enter image URL here">
-    <button id="submit-button">Add this Product</button>
-    <button onclick="somefun()">Go to Homepage</button>
-    <div id="image-container"></div>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="addProd.html">add</a>
+    <a href="homePage.html">home</a>
+    <h1>add</h1>
+    <input type="text" name="" id="id" placeholder="id" />
+    <input type="text" name="" id="title" placeholder="title" />
+    <input type="text" name="" id="price" placeholder="price" />
+    <input type="text" name="" id="description" placeholder="description" />
+    <input type="text" name="" id="category" placeholder="category" />
+    <input type="text" name="" id="image" placeholder="image" />
+    <input type="text" name="" id="rate" placeholder="rate" />
+    <input type="text" name="" id="count" placeholder="count" />
+    <button onclick="addData()">Add</button>
+  </body>
 </html>
+
 <script>
-    let productData=JSON.parse(localStorage.getItem("productArr")) || []
-    let name=document.querySelector("#name");
-    let Price=document.querySelector('#price');
-    let dis=document.querySelector('#dis');
-    let image=document.querySelector('#image-url');
-    let imageUrlInput = document.getElementById('image-url');
-    let submitButton = document.getElementById('submit-button');
-    let imageDiv=document.getElementById("image-container");
-    flag=false;
-    function somefun(){
-        window.location.href="Homepage.html"
-    }
-    submitButton.addEventListener('click',()=>{
-    let obj ={
-            name: name.value,
-            price: Price.value,
-            dis: dis.value,
-            image: image.value
-        }
-        for(let i=0;i<productData.length;i++){
-        if(productData[i].name === obj.name){
-            flag=true;
-            alert("Product already exists");
-        }
-        else{
-            flag=false;
-        }
-    }
-    if(flag === false){
-        productData.push(obj);
-        localStorage.setItem("productArr",JSON.stringify(productData));
-    }
-    console.log(productData);
-    const url=imageUrlInput.value;
-    const img=document.createElement("img");
-    img.src=url;
-    imageDiv.innerHTML='';
-    imageDiv.appendChild(img);
-    });
-    localStorage.setItem("productArr",JSON.stringify(productData));
+  let data = JSON.parse(localStorage.getItem("data")) || [];
+  console.log(data);
+
+  function addData() {
+    let id = document.getElementById("id");
+    let title = document.getElementById("title");
+    let price = document.getElementById("price");
+    let description = document.getElementById("description");
+    let category = document.getElementById("category");
+    let image = document.getElementById("image");
+    let rate = document.getElementById("rate");
+    let count = document.getElementById("count");
+
+    let obj = {
+      id: id.value,
+      title: title.value,
+      price: price.value,
+      description: description.value,
+      category: category.value,
+      image: image.value,
+      rating: {
+        rate: rate.value,
+        count: count.value,
+      },
+    };
+    data.push(obj);
+    localStorage.setItem("data", JSON.stringify(data))
+  }
 </script>

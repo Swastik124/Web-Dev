@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav{
+            display:flex;
+            justify-content: space-evenly;
+        }
+        a{
+            background-color: rgb(64, 177, 185);
+            padding: 1%;
+            border: 2px solid rgb(0, 0, 0);
+            margin: 2%;
+        }
+        body{
+            background-image: url("./wp4408476-cool-pics-wallpapers.jpg");
+            background-repeat: repeat-y;
+            background-size:cover;
+        }
+        .box1{
+            margin-top: 3%;
+            margin-left: 7%;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center; color: rgb(255, 255, 255); margin-top: 3%;">Welcome to this Page</h2>
+    <nav>
+        <a href="Homepage.html">Homepage</a><br>
+        <a href="login.html">login</a><br>
+        <a href="signUp.html">signUp</a><br>
+        <a href="addProd.html">addProd</a><br>
+    </nav>
+    <div class="box1">
+        <input type="text" name="text" id="text" placeholder="Search the product">
+        <button onclick="display()">Search</button>
+        <br><br>
+        <div class="box2">
+        <input type="text" name="product" placeholder="Product Name" id="productName">
+        <input type="text" name="price" id="price" placeholder="price" id="price">
+        <input type="text" name="discription" id="discription" placeholder="discription" id="discription">
+        <div id="image-container"></div><br>
+        <!-- <button onclick="right()" id="button">Add to Cart</button> -->
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function display(){
+        let data=JSON.parse(localStorage.getItem("productArr")) || alert("Enter Data into product page first");
+        let body=document.querySelector("body");
+        let name=document.getElementById('productName');
+        let desc=document.getElementById('discription');
+        let price=document.getElementById('price');
+        let image=document.getElementById('image-container');
+        let search=document.getElementById("text");
+        let btn=document.getElementById("button");
+        let container=document.querySelector(".box2");
+        
+        
+        for(let i=0;i<data.length;i++){
+            container.innerHTML='';
+            if(search.value===data[i].name){
+                name.value=data[i].name;
+                price.value=data[i].price;
+                desc.value=data[i].dis;
+                let img=document.createElement("img");
+                img.src=data[i].image;
+                image.innerHTML='';
+                image.appendChild(img);
+                img.style.width="44%"; 
+                
+                // btn.innerText="Add to Cart";
+                // btn.addEventListener("click",right());
+                // function right(){
+                //     addToCart(data[i]);
+                // }
+            }
+        
+        }body.append(name,price,desc,image);
+} 
+</script>
